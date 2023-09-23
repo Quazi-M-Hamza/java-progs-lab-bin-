@@ -1,0 +1,3 @@
+javac calender.java
+java calender
+pause

@@ -1,0 +1,29 @@
+import java.util.*;
+class ST_2018
+        {
+        public static void main(String args[])
+                {
+                long m=0l,n=0l;String str=" ";long d=0l,c;String str2=" ";String sum=" ";
+                Scanner sc=new Scanner(System.in);
+                System.out.println("enter the first number");
+                m=sc.nextLong();
+                System.out.println("enter the second number");
+                n=sc.nextLong();
+                if(m<0||n<0)
+                        {
+                        Ssytem.out.println("invalid input");
+                        System.exit(0);
+                        }
+                        else
+                        {
+                        while(m>0)
+                                {
+                                long r1=m%2;
+                                long m=m/2;
+                                str=r1+str;
+                                }
+                                str=m+str
+                                }
+                                System.out.println(str);
+                                }
+                                }

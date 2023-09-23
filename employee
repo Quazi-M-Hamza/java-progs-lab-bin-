@@ -1,0 +1,112 @@
+import java.io.*
+class Salary
+{
+        double bs,da,hra,ta,pf,it;
+        void get_details()throws IOException
+        {
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                System.out.print("Enter Basic Salary : \t");
+                bs=Double.parseDouble(br.readLine());
+                System.out.print("Enter Dairness Allowance :\t");
+                da=Double.parseDouble(br.readLine());
+                System.out.print("Enter House Rent Allowance : \t");
+                hra=Double.parseDouble(br.readLine());
+                System.out.print("Enter Travel Allowance :\t");
+                ta=Double.parseDouble(br.readLine());
+                System.out.print("Enter Provident Fund :\t");
+                pf=Double.parseDouble(br.readLine());
+                System.out.print("Enter Income Tax :\t");
+                it=Double.parseDouble(br.readLine());
+        }
+        void print_details()
+        {
+                System.out.println("Basic Salary: \t"+bs);
+                System.out.println("Dairness Allowance :\t" + (da=da/100*bs));
+                System.out.println("House Rent Allowance :\t"+(hra=hra/100*bs));
+                System.out.println("Travel Allowance :\t"+(ta=ta/100*bs));
+                System.out.println("Provident Fund :\t"+(pf=pf/100*bs));
+                System.out.println("Income Tax :\t"+(it=it/100*bs));
+        }
+        double gross_salary()
+        {
+                return(bs+da+hra+ta+pf);
+        }
+        double net_salary()
+        {
+                return(gross_salary()-it);
+        }
+}
+class Employee extends Salary
+{
+        String no,name,grade,post;
+        void set_employee()throws IOException
+        {
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                System.out.print("Enter Employee Number :\t");
+                no=br.readLine();
+                System.out.print("Enter Employee Name :\t");
+                name=br.readLine();
+                System.out.print("Enter Employee Grade :\t");
+                grade=br.readLine();
+                System.out.print("Enter Employee Post :\t");
+                post=br.readLine();
+        }
+        void print_employee()
+        {
+                System.out.println("Employee Number :\t"+no);
+                System.out.println("Employee Name :\t"+name);
+                System.out.println("Employee Grade :\t"+grade);
+                System.out.println("Employee Post :\t"+post);
+        }
+        void print_payslip()
+        {
+                print_employee();
+                print_details();
+        }
+        public static void main(String args[])throws IOException
+        {
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                System.out.print("Enter number of Employees :");
+                int N=Integer.parseInt(br.readLine());
+                Employee ob[]=new Employee[N];
+                for(int i=0;i<N;i++)
+                {
+                        ob[i].set_employee();
+                        ob[i].get_details();
+                }
+                do
+                {
+                        System.out.println("1) To print details of employee\n2) To print salary slip of employee\n3) To print payroll of all employee");
+                        String choice=br.readLine();
+                        if(choice=="1"||choice=="2")
+                        {
+                                System.out.print("Enter Employee Number : ");
+                                int emp=Integer.parseInt(br.readLine());
+                                if(emp<1||emp>N) System.out.println("Out of Range");
+                                else
+                                {
+                                        ob[emp-1].print_employee();
+                                        ob[emp-1].print_details();
+                                        if(choice=="2")
+                                        {
+                                                System.out.println("Gross Salary : \t"+ob[emp-1].gross_salary());
+                                                System.out.println("Net Salary : \t"+ob[emp-1].net_salary());
+                                        }
+                                }
+                        }
+                        else if(choice=="3")
+                        {
+                                for(int i=0;i<N;i++)
+                                {
+                                        ob[i].print_employee();
+                                        ob[i].print_details();
+                                        System.out.println("Gross Salary : \t"+ob[emp-1].gross_salary());
+                                        System.out.println("Net Salary : \t"+ob[emp-1].net_salary());
+                                        System.out.println("----------------------------------------------");
+                                }
+                        }
+
+                }while(choice=="1"||choice=="2"||choice=="3");
+                System.out.print("Thank You!");
+        }
+}

@@ -1,0 +1,49 @@
+import java.util.*;
+class smith
+{
+void SumDigit(intn)
+{
+int s=0;
+while(n>0)
+{
+int d=n%10;
+n=n/10;
+}
+return(s);
+}
+public static void main(String args[])
+{
+Scanner sc=new scanner(System.in);
+int num= sc.nextint();
+System.out.print("'Starting range");
+int s= sc.nexrInt();
+System.out.println("Ending Range");
+int l=sc.nextInt();
+if(s>l)
+{
+int t=s;
+s=l;
+l=t;
+}
+int sp=0;
+int x=2;
+t=num;
+while(t>1)
+{
+if(num%x==0)
+{
+sp=sp+SumDigit(x);
+num=num/x;
+}
+else
+x=x+1;
+}
+if(sp== SumDigit(num))
+System.out.println (" Smith no.");
+else
+System.out.println (" Not a Smith no.");
+}
+}
+
+
+
