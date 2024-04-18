@@ -1,1 +1,1 @@
-This repository containes java code which were written by me over the course of 2 years from 2019 to 2021.
+This repository containes java code which were written by me over the course of two years from 2019 to 2021.
